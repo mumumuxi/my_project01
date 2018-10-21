@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>重置密码</title>
+
+<style>
+.out{
+    width: 600px;
+    height: 900px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+</style>
+</head>
+<body>
+
+
+    <div class="out">
+
+        <h1>可以重新设置一个好记的新密码啦！</h1>
+        <form method="post" action="{% url 'user:pwd_reset_handle' %}">
+        {% csrf_token %}
+            <P><span>新&nbsp;&nbsp;&nbsp;密&nbsp;&nbsp;&nbsp;码：</span><input type="password" name="newpwd1" placeholder="至少8位"></P>
+            <P><span>确认新密码：</span><input type="password" name="newpwd2" placeholder="至少8位"></P>
+
+            <input type="hidden" name="email" value="{{ email }}">
+            <input type="hidden" name="path" value="{{ path }}">
+            <p><input type="submit" value="确认"></p>
+        </form>
+        <h1>{{ errors }}</h1>
+
+    </div>
+
+
+</body>
+</html>

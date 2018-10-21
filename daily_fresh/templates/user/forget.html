@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>忘记密码</title>
+
+<style>
+.out{
+    width: 900px;
+    height: 900px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+</style>
+</head>
+<body>
+
+
+    <div class="out">
+        <h1>真粗心，忘了密码吗？快通过邮箱找回密码吧！</h1>
+        <form method="post" action="/user/success_send">
+        {% csrf_token %}
+            <P><span>用户名：</span><input type="text" name="user_name"></P>
+            <P><span>邮&nbsp;&nbsp;&nbsp;箱：</span><input type="text" name="email"></P>
+            <p><input type="submit" value="确认发送验证邮件"></p>
+        </form>
+        <h1>{{ errors }}</h1>
+    </div>
+
+
+</body>
+</html>
